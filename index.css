@@ -1,0 +1,335 @@
+body {
+  margin: 0;
+  font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+/* NAV */
+.nav-container {
+  width: 100%;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.cuadro2 {
+  margin-top: 40px;
+}
+
+nav {
+  width: 100%;
+  height: 40px;
+  background: #ffffff;
+  font-size: 12px;
+  font-weight: 200;
+}
+
+/* evita comportamientos raros */
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* menú horizontal */
+nav ul li {
+  position: relative;
+  display: inline-block;
+}
+
+/* enlaces */
+nav ul li a {
+  padding: 12px 20px;
+  display: block;
+  color: black;
+  text-decoration: none;
+}
+
+/* hover */
+nav ul li a:hover {
+  opacity: 0.5;
+}
+
+/* dropdown */
+nav ul li ul {
+  display: none;
+  position: absolute;
+  background: #b4b4b4;
+  top: 100%;
+  left: 0;
+}
+
+nav ul li:hover ul {
+  display: block;
+}
+
+/* CUADRO 2 */
+.cuadro2 {
+  background-color: rgb(242, 242, 242);
+  width: 100%;
+  height: 620px;
+}
+.title{
+  font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-weight: 500; /* negrilla fuerte */
+  font-size: 48px;  /* tamaño grande */
+  padding: 40px;    /* separación */
+  text-align: center;
+}
+.subtt{
+  font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-weight: 100; /* negrilla fuerte */
+  font-size: 30px;
+  padding: 40px; 
+  text-align: center;
+  margin-top: -80px;
+}
+
+/* ---------- BOTONES PRINCIPALES ESTILOS ---------- */
+
+.botones {
+  display: flex;
+  gap: 20px;
+  padding: 40px;
+}
+.contenedor{
+  margin-top: -70px;
+  display: grid;
+  place-items: center;
+}
+
+/* Estilo base */
+.btn {
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 18px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* Botón azul (relleno) */
+.btn.primary {
+  background-color: #699C64;
+  color: white;
+}
+
+.btn.primary:hover {
+  background-color: #699C64;
+}
+
+/* Botón borde */
+.btn.outline {
+  border: 2px solid #699C64;
+  color: #699C64;
+}
+
+.btn.outline:hover {
+  background-color: #699C64;
+  color: white;
+}
+
+/* ---------- CIERRE DE BOTONES PRINCIPALES ESTILOS ---------- */
+
+/*----------------------- CARRUSEL -----------------------*/
+/* RESET */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* CONTENEDOR */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  margin: 50px auto;
+  overflow: hidden;
+}
+
+/* SLIDES */
+.slides {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+/* CADA SLIDE */
+.slide {
+  min-width: 100%;
+  position: relative;
+}
+
+/* IMAGEN */
+.slide img {
+  width: 100%;
+  display: block;
+  margin-top: -110px;
+}
+
+/* TEXTO ENCIMA */
+.caption {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  color: white;
+}
+
+.caption h2 {
+  font-size: 32px;
+  margin: 0;
+}
+
+.caption p {
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+/* OPCIONAL: efecto oscuro tipo Apple */
+.slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+  border-radius: 20px;
+}
+
+/*----------------------- FIN CARRUSEL -----------------------*/
+
+/*----------------------- INICIO DE CARDS ---------------------*/
+/* CONTENEDOR */
+.divcards{
+  margin-top: -30px;
+    background-color: rgb(238, 238, 238);
+}
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 60px;
+  flex-wrap: wrap;
+}
+
+/* CARD */
+.card {
+  background: #fff;
+  width: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+/* HOVER SUAVE */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* IMAGEN */
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* TEXTO */
+.card h2 {
+  font-weight: 700;
+  margin: 20px 0 10px;
+}
+
+.card p {
+  font-weight: 300;
+  color: #555;
+  padding: 0 20px 20px;
+}
+
+/* DETALLE VERDE (#699C64) */
+.card h2 {
+  color: #699C64;
+}
+/*----------------------- FIN DE CARDS ---------------------*/
+
+/* FOOTER */
+.footer {
+  background: #f5f5f7;
+  padding: 50px 20px 20px;
+  font-family: Arial, sans-serif;
+  color: #1d1d1f;
+}
+
+/* CONTENEDOR */
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+}
+
+/* TITULOS */
+.footer h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.footer h4 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* TEXTOS */
+.slogan {
+  margin: 10px 0;
+  color: #6e6e73;
+}
+
+.firma {
+  font-size: 14px;
+  color: #6e6e73;
+}
+
+/* LINKS */
+.footer a {
+  display: block;
+  text-decoration: none;
+  color: #1d1d1f;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+.footer a:hover {
+  color: #0071e3;
+  transform: translateX(5px);
+}
+
+/* CONTACTO */
+.footer-contact p {
+  color: #6e6e73;
+}
+
+/* PARTE INFERIOR */
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  font-size: 14px;
+  color: #6e6e73;
+}
+/* FOOTER FIJO REAL */
+html, body {
+  height: 100%;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}

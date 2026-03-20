@@ -1,0 +1,55 @@
+*{
+    color: aliceblue;
+}
+
+.encab{
+    background-color: #afadad;
+    width: 100%;
+    margin-left: -120px;
+}
+.body{
+
+    color: aliceblue;
+}
+.fondo{
+    width: 400px;
+    height: 550px;
+    background-color: #121212;
+    border-radius: 5%;
+}
+.fondo2{
+    background-color: #252525;
+    width: 300px;
+    height: 120px;
+    border-radius: 7%;
+    margin-left: 50px;
+}
+.num{
+    background-color: #2A2A2A;
+    width: 150px;
+    height: 30px;
+    font-size: 18px;
+}
+
+.pn1{
+    margin-left: 65px;
+}
+
+.botones{
+    margin-left: 150px;
+    
+}
+.sm{
+    background-color: #FF9500;
+    width: 50px;
+    height: 43px;
+    border-radius: 100%;
+    border-color: #FF9500;
+    font-size: 20px;
+}
+.resul{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: end;
+    margin-top: 5px;
+}
