@@ -333,3 +333,109 @@ html, body {
 main {
   flex: 1;
 }
+
+/* ================== RESPONSIVE ================== */
+
+/* 📱 Tablets */
+@media (max-width: 1024px) {
+
+  .title {
+    font-size: 36px;
+  }
+
+  .subtt {
+    font-size: 22px;
+    margin-top: -40px;
+  }
+
+  .carousel {
+    height: 350px;
+  }
+
+  .slide img {
+    margin-top: 0;
+  }
+
+}
+
+/* 📱 MÓVIL */
+@media (max-width: 768px) {
+
+  /* NAV */
+  nav {
+    height: auto;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    display: block;
+  }
+
+  nav ul li a {
+    padding: 10px;
+  }
+
+  /* HERO */
+  .cuadro2 {
+    height: auto;
+    padding: 40px 20px;
+  }
+
+  .title {
+    font-size: 28px;
+    padding: 20px;
+  }
+
+  .subtt {
+    font-size: 16px;
+    margin-top: -20px;
+    padding: 10px;
+  }
+
+  /* BOTONES */
+  .botones {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 80%;
+    text-align: center;
+  }
+
+  /* CARRUSEL */
+  .carousel {
+    height: 250px;
+    margin: 20px 0;
+  }
+
+  .slide img {
+    margin-top: 0;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* CARDS */
+  .cards {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  /* FOOTER */
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+}
