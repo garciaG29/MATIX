@@ -11,3 +11,9 @@ setInterval(() => {
   index = (index + 1) % total;
   updateSlide();
 }, 3000);
+const toggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector(".menu");
+
+toggle.addEventListener("click", () => {
+  menu.classList.toggle("active");
+});
