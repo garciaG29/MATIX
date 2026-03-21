@@ -405,23 +405,27 @@ nav {
     width: 100%;
     max-width: 320px;
     padding: 15px;
+    color: #000;
   }
 
   /* PANTALLA */
   #calculadora input{
     font-size: 18px;
     padding: 15px;
+    color: #000;
   }
 
   /* BOTONES */
   .buttons{
     grid-template-columns: repeat(4, 1fr); /* 🔥 adaptable */
     gap: 8px;
+    color: #000;
   }
 
   #calculadora button{
     height: 50px;
     font-size: 14px;
+    color: #000;
   }
 
   /* HISTORIAL */
@@ -443,19 +447,23 @@ nav {
 
   .calc-title{
     font-size: 36px;
+    color: #000;
   }
 
   .calc-sub{
     font-size: 16px;
+    color: #000;
   }
 
   #calculadora{
     padding: 15px;
+    color: #000;
   }
 
   .buttons{
     grid-template-columns: repeat(4, 65px);
     gap: 10px;
+    color: #000;
   }
 
   #calculadora button{
@@ -480,6 +488,7 @@ nav {
     backdrop-filter: blur(20px);
     text-align: center;
     padding: 20px 0;
+    color: #000;
   }
 
   .menu.active{
@@ -492,26 +501,31 @@ nav {
     left: 20px;
     font-size: 22px;
     cursor: pointer;
+    color: #000;
   }
 
   /* TITULOS */
   .calc-title{
     font-size: 28px;
+    color: #000;
   }
 
   .calc-sub{
     font-size: 14px;
+    color: #000;
   }
 
   /* CALCULADORA */
   .calc-wrapper{
     margin-top: 30px;
+    color: #000;
   }
 
   #calculadora{
     width: 100%;
     max-width: 320px;
     padding: 15px;
+    color: #000;
   }
 
   /* PANTALLA */
@@ -524,11 +538,13 @@ nav {
   .buttons{
     grid-template-columns: repeat(4, 1fr); /* 🔥 adaptable */
     gap: 8px;
+    color: #000;
   }
 
   #calculadora button{
     height: 50px;
     font-size: 14px;
+    color: #000;
   }
 
   /* HISTORIAL */
@@ -546,15 +562,18 @@ nav {
 
   .calc-title{
     font-size: 24px;
+    color: #000;
   }
 
   #calculadora{
     max-width: 280px;
+    color: #000;
   }
 
   #calculadora button{
     height: 45px;
     font-size: 13px;
+    color: #000;
   }
 
 }
