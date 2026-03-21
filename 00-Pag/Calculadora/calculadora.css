@@ -1,65 +1,570 @@
+/* RESET */
 *{
 	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
+/* BODY */
 body{
-background: rgba(255,255,255,0.6);
-  margin: 0;
+  background: rgb(242,242,242);
   min-height: 100vh;
+  font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+/* ================= NAV APPLE ================= */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.6);
+
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  z-index: 1000;
 }
 
-#calculadora table{
-	border-collapse: collapse;
+.menu {
+  display: flex;
+  gap: 30px;
+  list-style: none;
 }
 
-#calculadora table{
-	height: 300px;
+.menu li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+  transition: 0.3s;
 }
 
-#calculadora button,
+.menu li a:hover {
+  opacity: 0.5;
+}
+
+/* ================= SECCIÓN ================= */
+.calc-section{
+  margin-top: 80px;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+/* TITULOS */
+.calc-title{
+  font-size: 48px;
+  font-weight: 500;
+}
+
+.calc-sub{
+  font-size: 18px;
+  color: #6e6e73;
+  margin-top: 10px;
+}
+
+/* ================= CALCULADORA ================= */
+.calc-wrapper{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+#calculadora{
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(20px);
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+/* PANTALLA */
 #calculadora input{
-	width: 100%;
-	height: 100%;
-	font-size: 1em;
-	padding: 10px
-}
-
-#calculadora input{
-	padding: 15px;
-	color: white;
-	border: none;
-	background-color: rgba(0, 0, 0, .5);
+  width: 100%;
+  padding: 20px;
+  font-size: 22px;
+  color: white;
+  border: none;
+  background-color: #1d1d1f;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  text-align: right;
 }
 
 #calculadora input:focus{
 	outline: none;
 }
 
+/* BOTONES GRID */
+.buttons{
+  display: grid;
+  grid-template-columns: repeat(4, 70px);
+  gap: 10px;
+}
+
+/* BOTONES */
 #calculadora button{
-	background-color: rgba(0, 0, 0, .4);
-	border: none;
-	color: white;
-	font-weight: bold;
-	cursor: pointer;
+  width: 100%;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  background: #f2f2f2;
+  transition: 0.2s;
 }
 
 #calculadora button:hover{
-	background-color: rgba(0, 0, 0, .5);
+  transform: scale(1.05);
+  background: #e5e5e5;
 }
 
-#calculadora button:focus{
-	outline: none;
-}
-
+/* OPERACIONES */
 #calculadora button.operacion{
-	background-color: #699C64;
+  background-color: #699C64;
+  color: white;
 }
 
-#calculadora button.operacion#restar,
-#calculadora button.operacion#igual,
-#calculadora button.operacion#clear{
-	background-color: #9EBF9B;
+#calculadora button.operacion:hover{
+  background-color: #5a8756;
+}
+
+/* ESPECIALES */
+#clear, #igual{
+  background-color: #9EBF9B;
+  color: rgb(0, 0, 0);
+}
+
+/* INFO */
+.calc-info{
+  margin-top: 50px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #6e6e73;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px){
+
+  .calc-title{
+    font-size: 32px;
+  }
+
+  .calc-sub{
+    font-size: 16px;
+  }
+
+  .buttons{
+    grid-template-columns: repeat(4, 60px);
+  }
+
+  #calculadora button{
+    width: 100%;
+  }
+
+}
+#calculadora button{
+  transition: all 0.15s ease;
+}
+
+#calculadora button:active{
+  transform: scale(0.92);
+  filter: brightness(0.9);
+}
+#calculadora button{
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#calculadora button:active{
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.history{
+  margin-top: 40px;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.history ul{
+  list-style: none;
+  padding: 0;
+}
+
+.history li{
+  background: white;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+/* ================= RESPONSIVE PRO ================= */
+
+/* 📱 TABLET */
+@media (max-width: 1024px){
+
+  .calc-title{
+    font-size: 36px;
+  }
+
+  .calc-sub{
+    font-size: 16px;
+  }
+
+  #calculadora{
+    padding: 15px;
+  }
+
+  .buttons{
+    grid-template-columns: repeat(4, 65px);
+    gap: 10px;
+  }
+
+  #calculadora button{
+    height: 55px;
+    font-size: 15px;
+  }
+
+}
+
+
+/* 📱 MÓVIL */
+@media (max-width: 768px){
+
+  /* NAV */
+  .menu{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(20px);
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .menu.active{
+    display: flex;
+  }
+
+  .menu-toggle{
+    display: block;
+    position: absolute;
+    left: 20px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  /* TITULOS */
+  .calc-title{
+    font-size: 28px;
+  }
+
+  .calc-sub{
+    font-size: 14px;
+  }
+
+  /* CALCULADORA */
+  .calc-wrapper{
+    margin-top: 30px;
+  }
+
+  #calculadora{
+    width: 100%;
+    max-width: 320px;
+    padding: 15px;
+  }
+
+  /* PANTALLA */
+  #calculadora input{
+    font-size: 18px;
+    padding: 15px;
+  }
+
+  /* BOTONES */
+  .buttons{
+    grid-template-columns: repeat(4, 1fr); /* 🔥 adaptable */
+    gap: 8px;
+  }
+
+  #calculadora button{
+    height: 50px;
+    font-size: 14px;
+  }
+
+  /* HISTORIAL */
+  .history{
+    max-width: 90%;
+  }
+
+  .history li{
+    font-size: 13px;
+  }
+
+}
+
+
+/* 📱 MÓVIL PEQUEÑO (iPhone SE 🔥) */
+@media (max-width: 400px){
+
+  .calc-title{
+    font-size: 24px;
+  }
+
+  #calculadora{
+    max-width: 280px;
+  }
+
+  #calculadora button{
+    height: 45px;
+    font-size: 13px;
+  }
+
+}
+
+/* ================= RESPONSIVE PRO ================= */
+
+/* 📱 TABLET */
+@media (max-width: 1024px){
+
+  .calc-title{
+    font-size: 36px;
+  }
+
+  .calc-sub{
+    font-size: 16px;
+  }
+
+  #calculadora{
+    padding: 15px;
+  }
+
+  .buttons{
+    grid-template-columns: repeat(4, 65px);
+    gap: 10px;
+  }
+
+  #calculadora button{
+    height: 55px;
+    font-size: 15px;
+  }
+
+}
+
+
+/* 📱 MÓVIL */
+@media (max-width: 768px){
+
+  /* NAV */
+  .menu{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(20px);
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .menu.active{
+    display: flex;
+  }
+
+  .menu-toggle{
+    display: block;
+    position: absolute;
+    left: 20px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  /* TITULOS */
+  .calc-title{
+    font-size: 28px;
+  }
+
+  .calc-sub{
+    font-size: 14px;
+  }
+
+  /* CALCULADORA */
+  .calc-wrapper{
+    margin-top: 30px;
+  }
+
+  #calculadora{
+    width: 100%;
+    max-width: 320px;
+    padding: 15px;
+  }
+
+  /* PANTALLA */
+  #calculadora input{
+    font-size: 18px;
+    padding: 15px;
+  }
+
+  /* BOTONES */
+  .buttons{
+    grid-template-columns: repeat(4, 1fr); /* 🔥 adaptable */
+    gap: 8px;
+  }
+
+  #calculadora button{
+    height: 50px;
+    font-size: 14px;
+  }
+
+  /* HISTORIAL */
+  .history{
+    max-width: 90%;
+  }
+
+  .history li{
+    font-size: 13px;
+  }
+
+}
+
+
+/* ================= RESPONSIVE PRO ================= */
+
+/* TABLET */
+@media (max-width: 1024px){
+
+  .calc-title{
+    font-size: 36px;
+  }
+
+  .calc-sub{
+    font-size: 16px;
+  }
+
+  #calculadora{
+    padding: 15px;
+  }
+
+  .buttons{
+    grid-template-columns: repeat(4, 65px);
+    gap: 10px;
+  }
+
+  #calculadora button{
+    height: 55px;
+    font-size: 15px;
+  }
+
+}
+
+
+/* MÓVIL */
+@media (max-width: 768px){
+
+  /* NAV */
+  .menu{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(20px);
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .menu.active{
+    display: flex;
+  }
+
+  .menu-toggle{
+    display: block;
+    position: absolute;
+    left: 20px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  /* TITULOS */
+  .calc-title{
+    font-size: 28px;
+  }
+
+  .calc-sub{
+    font-size: 14px;
+  }
+
+  /* CALCULADORA */
+  .calc-wrapper{
+    margin-top: 30px;
+  }
+
+  #calculadora{
+    width: 100%;
+    max-width: 320px;
+    padding: 15px;
+  }
+
+  /* PANTALLA */
+  #calculadora input{
+    font-size: 18px;
+    padding: 15px;
+  }
+
+  /* BOTONES */
+  .buttons{
+    grid-template-columns: repeat(4, 1fr); /* 🔥 adaptable */
+    gap: 8px;
+  }
+
+  #calculadora button{
+    height: 50px;
+    font-size: 14px;
+  }
+
+  /* HISTORIAL */
+  .history{
+    max-width: 90%;
+  }
+
+  .history li{
+    font-size: 13px;
+  }
+
+}
+/* MÓVIL PEQUEÑO */
+@media (max-width: 400px){
+
+  .calc-title{
+    font-size: 24px;
+  }
+
+  #calculadora{
+    max-width: 280px;
+  }
+
+  #calculadora button{
+    height: 45px;
+    font-size: 13px;
+  }
+
+}
+
+
+/* PANTALLAS GRANDES */
+@media (min-width: 1200px){
+
+  #calculadora{
+    transform: scale(1.1);
+  }
+
 }
