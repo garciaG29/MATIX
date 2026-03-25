@@ -180,3 +180,8 @@ document.getElementById("tasaUsd").innerText =
 
 document.getElementById("tasaEur").innerText =
     `EUR: ${tasaEUR.toFixed(6)}`;
+    
+    document.querySelector(".menu-toggle")
+.addEventListener("click", () => {
+    document.querySelector(".menu").classList.toggle("active");
+});
