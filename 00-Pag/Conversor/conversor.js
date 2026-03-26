@@ -1,3 +1,6 @@
+/* =========================
+   CAROUSEL (SIN CAMBIOS)
+========================= */
 const track = document.querySelector(".carousel-track");
 const slides = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".dot");
@@ -5,21 +8,16 @@ const dots = document.querySelectorAll(".dot");
 let index = 0;
 const totalSlides = slides.length;
 
-/* 👉 MOVER SLIDE */
 function updateCarousel() {
   track.style.transform = `translateX(-${index * 100}%)`;
-
-  // actualizar dots
   dots.forEach(dot => dot.classList.remove("active"));
   dots[index].classList.add("active");
 }
 
-/* SIGUIENTE SLIDE */
 function nextSlide() {
   index = (index + 1) % totalSlides;
   updateCarousel();
 }
-
 
 dots.forEach((dot, i) => {
   dot.addEventListener("click", () => {
@@ -28,21 +26,15 @@ dots.forEach((dot, i) => {
   });
 });
 
-
 let interval = setInterval(nextSlide, 5000);
 
-/* PAUSAR AL PASAR EL MOUSE */
 const carousel = document.querySelector(".carousel");
 
-carousel.addEventListener("mouseenter", () => {
-  clearInterval(interval);
-});
-
+carousel.addEventListener("mouseenter", () => clearInterval(interval));
 carousel.addEventListener("mouseleave", () => {
   interval = setInterval(nextSlide, 5000);
 });
 
-/* SWIPE (MÓVIL) */
 let startX = 0;
 let endX = 0;
 
@@ -53,9 +45,7 @@ carousel.addEventListener("touchstart", (e) => {
 carousel.addEventListener("touchend", (e) => {
   endX = e.changedTouches[0].clientX;
 
-  if (startX - endX > 50) {
-    nextSlide();
-  }
+  if (startX - endX > 50) nextSlide();
 
   if (endX - startX > 50) {
     index = (index - 1 + totalSlides) % totalSlides;
@@ -63,125 +53,209 @@ carousel.addEventListener("touchend", (e) => {
   }
 });
 
-/* CONVERSOR DE MONEDAS */
+/* =========================
+   CONVERSOR FINAL 🔥
+========================= */
+
+// Inputs
 let inputCop = document.getElementById("inputCop");
 let inputUsd = document.getElementById("inputUsd");
 let inputEur = document.getElementById("inputEur");
+let inputMxn = document.getElementById("inputMxn");
+let inputArs = document.getElementById("inputArs");
+let inputGbp = document.getElementById("inputGbp");
+let inputBtc = document.getElementById("inputBtc");
 
-let tasaUSD = 0;
-let tasaEUR = 0;
-let actualizando = false; // evita loop infinito
+// Tasas
+let tasas = {
+    USD: null,
+    EUR: null,
+    MXN: null,
+    ARS: null,
+    GBP: null,
+    BTC: null
+};
 
-// Obtener tasas
+let actualizando = false;
+
+/* =========================
+   OBTENER TASAS
+========================= */
 async function obtenerTasa() {
     try {
-        let response = await fetch("https://api.exchangerate-api.com/v4/latest/COP");
-        let data = await response.json();
+        let res = await fetch("https://api.exchangerate-api.com/v4/latest/COP");
+        let data = await res.json();
 
-        tasaUSD = data.rates.USD;
-        tasaEUR = data.rates.EUR;
+        tasas.USD = data.rates.USD;
+        tasas.EUR = data.rates.EUR;
+        tasas.MXN = data.rates.MXN;
+        tasas.ARS = data.rates.ARS;
+        tasas.GBP = data.rates.GBP;
 
-        // ACTUALIZAR AQUÍ (cuando ya tienes datos reales)
+        let btcRes = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=cop");
+        let btcData = await btcRes.json();
+
+        if (btcData.bitcoin) {
+            tasas.BTC = 1 / btcData.bitcoin.cop;
+        }
+
         document.getElementById("tasaUsd").innerHTML =
-        `<strong>USD</strong><br><small>1 COP → ${tasaUSD.toFixed(6)}</small>`;
+        `<strong>USD</strong><br><small>1 COP → ${tasas.USD.toFixed(6)}</small>`;
 
         document.getElementById("tasaEur").innerHTML =
-        `<strong>EUR</strong><br><small>1 COP → ${tasaEUR.toFixed(6)}</small>`;
+        `<strong>EUR</strong><br><small>1 COP → ${tasas.EUR.toFixed(6)}</small>`;
 
     } catch (error) {
-        console.error("Error al obtener tasa", error);
+        console.error("Error obteniendo tasas", error);
     }
 }
 
 obtenerTasa();
 
-// Formateadores
-const formatoCOP = new Intl.NumberFormat("es-CO", {
-    style: "currency",
-    currency: "COP"
-});
-
-const formatoUSD = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD"
-});
-
-const formatoEUR = new Intl.NumberFormat("es-ES", {
-    style: "currency",
-    currency: "EUR"
-});
-
-// Limpiar número
+/* =========================
+   UTILIDADES
+========================= */
 function limpiarNumero(valor) {
-    return parseFloat(valor.replace(/\./g, "").replace(",", "."));
+    if (!valor) return NaN;
+    valor = valor.replace(/\./g, "").replace(",", ".");
+    return parseFloat(valor);
 }
 
-// =======================
-// COP → USD y EUR
-// =======================
+function formatearNumero(num) {
+    if (isNaN(num)) return "";
+
+    return new Intl.NumberFormat("es-CO", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(num);
+}
+
+function convertirDesdeCOP(cop) {
+    return {
+        USD: tasas.USD ? cop * tasas.USD : "",
+        EUR: tasas.EUR ? cop * tasas.EUR : "",
+        MXN: tasas.MXN ? cop * tasas.MXN : "",
+        ARS: tasas.ARS ? cop * tasas.ARS : "",
+        GBP: tasas.GBP ? cop * tasas.GBP : "",
+        BTC: tasas.BTC ? cop * tasas.BTC : ""
+    };
+}
+
+function actualizarCampos(cop, origen) {
+    let r = convertirDesdeCOP(cop);
+
+    if (origen !== "COP") inputCop.value = r.COP ? formatearNumero(cop) : inputCop.value;
+    if (origen !== "USD") inputUsd.value = formatearNumero(r.USD);
+    if (origen !== "EUR") inputEur.value = formatearNumero(r.EUR);
+    if (origen !== "MXN") inputMxn.value = formatearNumero(r.MXN);
+    if (origen !== "ARS") inputArs.value = formatearNumero(r.ARS);
+    if (origen !== "GBP") inputGbp.value = formatearNumero(r.GBP);
+    if (origen !== "BTC") inputBtc.value = formatearNumero(r.BTC);
+}
+
+/* =========================
+   EVENTOS (SIN BUG)
+========================= */
+
 inputCop.addEventListener("input", function () {
     if (actualizando) return;
 
-    let num = limpiarNumero(this.value);
-    if (isNaN(num)) return;
+    let cop = limpiarNumero(this.value);
+    if (isNaN(cop)) return;
 
     actualizando = true;
-
-    let usd = num * tasaUSD;
-    let eur = num * tasaEUR;
-
-    inputUsd.value = formatoUSD.format(usd);
-    inputEur.value = formatoEUR.format(eur);
-
+    actualizarCampos(cop, "COP");
     actualizando = false;
 });
 
-// =======================
-// USD → COP y EUR
-// =======================
 inputUsd.addEventListener("input", function () {
-    if (actualizando) return;
+    if (actualizando || !tasas.USD) return;
 
-    let num = limpiarNumero(this.value);
-    if (isNaN(num)) return;
+    let usd = limpiarNumero(this.value);
+    if (isNaN(usd)) return;
 
     actualizando = true;
-
-    let cop = num / tasaUSD;
-    let eur = cop * tasaEUR;
-
-    inputCop.value = formatoCOP.format(cop);
-    inputEur.value = formatoEUR.format(eur);
-
+    actualizarCampos(usd / tasas.USD, "USD");
     actualizando = false;
 });
 
-// =======================
-// EUR → COP y USD
-// =======================
 inputEur.addEventListener("input", function () {
-    if (actualizando) return;
+    if (actualizando || !tasas.EUR) return;
 
-    let num = limpiarNumero(this.value);
-    if (isNaN(num)) return;
+    let eur = limpiarNumero(this.value);
+    if (isNaN(eur)) return;
 
     actualizando = true;
-
-    let cop = num / tasaEUR;
-    let usd = cop * tasaUSD;
-
-    inputCop.value = formatoCOP.format(cop);
-    inputUsd.value = formatoUSD.format(usd);
-
+    actualizarCampos(eur / tasas.EUR, "EUR");
     actualizando = false;
 });
-document.getElementById("tasaUsd").innerText =
-    `USD: ${tasaUSD.toFixed(6)}`;
 
-document.getElementById("tasaEur").innerText =
-    `EUR: ${tasaEUR.toFixed(6)}`;
-    
-    document.querySelector(".menu-toggle")
+inputMxn.addEventListener("input", function () {
+    if (actualizando || !tasas.MXN) return;
+
+    let mxn = limpiarNumero(this.value);
+    if (isNaN(mxn)) return;
+
+    actualizando = true;
+    actualizarCampos(mxn / tasas.MXN, "MXN");
+    actualizando = false;
+});
+
+inputArs.addEventListener("input", function () {
+    if (actualizando || !tasas.ARS) return;
+
+    let ars = limpiarNumero(this.value);
+    if (isNaN(ars)) return;
+
+    actualizando = true;
+    actualizarCampos(ars / tasas.ARS, "ARS");
+    actualizando = false;
+});
+
+inputGbp.addEventListener("input", function () {
+    if (actualizando || !tasas.GBP) return;
+
+    let gbp = limpiarNumero(this.value);
+    if (isNaN(gbp)) return;
+
+    actualizando = true;
+    actualizarCampos(gbp / tasas.GBP, "GBP");
+    actualizando = false;
+});
+
+inputBtc.addEventListener("input", function () {
+    if (actualizando || !tasas.BTC) return;
+
+    let btc = parseFloat(this.value);
+    if (isNaN(btc)) return;
+
+    actualizando = true;
+    actualizarCampos(btc / tasas.BTC, "BTC");
+    actualizando = false;
+});
+
+/* =========================
+   FORMATO AL SALIR 🔥
+========================= */
+function formatearAlSalir(input) {
+    let numero = limpiarNumero(input.value);
+    if (isNaN(numero)) return;
+
+    input.value = formatearNumero(numero);
+}
+
+inputCop.addEventListener("blur", () => formatearAlSalir(inputCop));
+inputUsd.addEventListener("blur", () => formatearAlSalir(inputUsd));
+inputEur.addEventListener("blur", () => formatearAlSalir(inputEur));
+inputMxn.addEventListener("blur", () => formatearAlSalir(inputMxn));
+inputArs.addEventListener("blur", () => formatearAlSalir(inputArs));
+inputGbp.addEventListener("blur", () => formatearAlSalir(inputGbp));
+inputBtc.addEventListener("blur", () => formatearAlSalir(inputBtc));
+
+/* =========================
+   MENU
+========================= */
+document.querySelector(".menu-toggle")
 .addEventListener("click", () => {
     document.querySelector(".menu").classList.toggle("active");
 });
