@@ -141,10 +141,11 @@ function convertirDesdeCOP(cop) {
     };
 }
 
+/* 🔥 FUNCIÓN CORREGIDA */
 function actualizarCampos(cop, origen) {
     let r = convertirDesdeCOP(cop);
 
-    if (origen !== "COP") inputCop.value = r.COP ? formatearNumero(cop) : inputCop.value;
+    if (origen !== "COP") inputCop.value = formatearNumero(cop);
     if (origen !== "USD") inputUsd.value = formatearNumero(r.USD);
     if (origen !== "EUR") inputEur.value = formatearNumero(r.EUR);
     if (origen !== "MXN") inputMxn.value = formatearNumero(r.MXN);
