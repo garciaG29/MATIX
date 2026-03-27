@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CALCULADORA</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="calculadora.css">
+<link rel="icon" href="./logo.png?v=3">
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="menu-toggle">☰</div>
+    <img src="./logo.png" alt="Logo MATIX" class="logo">
+    <ul class="menu">
+        <li><a href="https://garciag29.github.io/MATIX/#">Inicio</a></li>
+        <li><a href="/MATIX/00-Pag/Calculadora/calculadora.html">Calculadora</a></li>
+        <li><a href="/MATIX/00-Pag/Conversor/conversor.html">Conversor</a></li>
+        <li><a href="#">Fórmulas</a></li>
+        <li><a href="#">Contacto</a></li>
+    </ul>
+</nav>
+<!-- SECCIÓN CALCULADORA -->
+<section class="calc-section">
+
+    <h1 class="calc-title">Calculadora</h1>
+    <p class="calc-sub">Simple. Rápida. Inteligente.</p>
+
+    <!-- CALCULADORA -->
+    <div class="calc-wrapper">
+        <div id="calculadora">
+            <input type="text" id="display" disabled>
+
+            <div class="buttons">
+                <!-- LIMPIAR -->
+                <button onclick="clearDisplay()" id="clear" style="background-color: #83AD7F;">CA</button>
+                <button onclick="append('/')" style="background-color: #BAD1B7;">/</button>
+                <button onclick="append('*')" style="background-color: #BAD1B7;">×</button>
+                <button onclick="append('-')" style="background-color: #BAD1B7;">-</button>
+
+                <!-- NÚMEROS -->
+                    <button onclick="append('7')">7</button>
+                    <button onclick="append('8')">8</button>
+                <button onclick="append('9')">9</button>
+                <button onclick="append('+')" style="background-color: #BAD1B7;">+</button>
+
+                <button onclick="append('4')">4</button>
+                <button onclick="append('5')">5</button>
+                <button onclick="append('6')">6</button>
+                <button onclick="calculate()" id="igual" style="background-color: #BAD1B7;">=</button>
+
+                <button onclick="append('1')">1</button>
+                <button onclick="append('2')">2</button>
+                <button onclick="append('3')">3</button>
+                <button onclick="append('0')">0</button>
+
+                <!-- CIENTÍFICOS -->
+                <button onclick="append('Math.sqrt(')">√</button>
+                <button onclick="append('Math.sin(')">sin</button>
+                <button onclick="append('Math.cos(')">cos</button>
+                <button onclick="append('Math.tan(')">tan</button>
+
+                <button onclick="append('**2')">x²</button>
+                <button onclick="append('**3')">x³</button>
+                <button onclick="append('(')" style="background-color: #BAD1B7;">(</button>
+                <button onclick="append(')')" style="background-color: #BAD1B7;">)</button>
+
+            </div>
+        </div>
+    </div>
+    <div class="history">
+        <h3>Historial</h3>
+        <ul id="historyList"></ul>
+    </div>
+    <!-- INFO -->
+    <div class="calc-info">
+        <h3>¿Qué puedes hacer?</h3>
+        <p>Realiza operaciones básicas, cálculos rápidos y mejora tu productividad diaria.</p>
+    </div>
+
+</section>
+
+<script src="calculadora.js"></script>
+
+</body>
+</html>
