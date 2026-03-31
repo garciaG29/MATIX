@@ -1,0 +1,193 @@
+/* ================= VARIABLES DE COLOR ================= */
+:root {
+--bg-main: #f2f2f2;
+--bg-glass: rgba(255,255,255,0.7);
+--bg-strong: #ffffff;
+
+--text-main: #000000;
+--text-secondary: #6e6e73;
+
+--dark: #e5e5e5;
+
+--accent: #699C64;
+--accent-hover: #5a8756;
+--accent-soft: #9EBF9B;
+
+--border-soft: rgba(0,0,0,0.05);
+--shadow-soft: rgba(0,0,0,0.1);
+}
+
+/* RESET + FUENTE GLOBAL */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+/* 🔥 APLICA LA FUENTE A TODO */
+html, body, input, button, textarea {
+font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+/* NAV */
+nav {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 50px;
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+background: rgba(255,255,255,0.6);
+
+border-bottom: 1px solid var(--border-soft);
+z-index: 1000;
+}
+
+.logo{
+height: 30px;
+margin-right: 20px;
+}
+
+.menu {
+display: flex;
+gap: 30px;
+list-style: none;
+}
+
+.menu li a {
+text-decoration: none;
+color: var(--text-main);
+font-size: 14px;
+transition: 0.3s;
+}
+
+.menu li a:hover {
+opacity: 0.5;
+}
+
+/* BODY */
+body {
+background: var(--bg-main);
+color: var(--text-main);
+}
+
+/* HEADER */
+header {
+background: var(--bg-strong);
+padding: 15px;
+text-align: center;
+font-size: 24px;
+font-weight: bold;
+box-shadow: 0 5px 15px var(--shadow-soft);
+}
+
+/* BUSCADOR */
+.buscador {
+text-align: center;
+margin: 20px;
+}
+
+/* INPUT GLASS */
+.buscador input {
+padding: 12px;
+width: 60%;
+border-radius: 14px;
+border: 1px solid rgba(255,255,255,0.4);
+font-size: 16px;
+outline: none;
+
+background: rgba(255,255,255,0.6);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+
+color: var(--text-main);
+
+box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+transition: all 0.25s ease;
+}
+
+.buscador input::placeholder {
+color: var(--text-secondary);
+}
+
+.buscador input:hover {
+background: rgba(255,255,255,0.7);
+}
+
+.buscador input:focus {
+background: rgba(255,255,255,0.85);
+border: 1px solid var(--accent-soft);
+box-shadow:
+0 4px 20px rgba(0,0,0,0.1),
+0 0 0 3px rgba(158,191,155,0.25);
+}
+
+/* CONTENEDOR GRID */
+.contenedor {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 20px;
+padding: 20px;
+}
+
+/* TARJETAS */
+.card {
+background: var(--bg-glass);
+border-radius: 15px;
+padding: 20px;
+backdrop-filter: blur(20px);
+box-shadow: 0 10px 30px var(--shadow-soft);
+transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+transform: scale(1.05);
+box-shadow: 0 15px 40px var(--shadow-soft);
+}
+
+/* TITULOS */
+h2 {
+color: var(--accent);
+margin-bottom: 10px;
+}
+
+/* FORMULAS */
+.formula {
+background: var(--dark);
+color: #000;
+padding: 10px;
+border-radius: 10px;
+margin: 10px 0;
+font-family: monospace;
+font-size: 15px;
+}
+
+/* BOTONES */
+button {
+padding: 8px 12px;
+border: none;
+border-radius: 8px;
+background: var(--accent);
+color: white;
+cursor: pointer;
+margin-bottom: 10px;
+transition: all 0.2s;
+}
+
+button:hover {
+background: var(--accent-hover);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+.buscador input {
+width: 90%;
+}
+}
