@@ -2,91 +2,128 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>FORMULAS</title>
+  <title>Fórmulas</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fuente -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;600&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
   <link rel="stylesheet" href="formulas.css">
 </head>
 
 <body>
 
-<!-- NAV -->
-    <div class="nav-container">
-        <nav>
-            <div class="menu-toggle">☰</div>
-            <img src="./logo.png" alt="MATIX Logo" class="logo">
-            <ul class="menu">
-                <li><a href="/MATIX/">Home</a></li>
-                <li><a href="/MATIX/00-Pag/Calculadora/calculadora.html">Calculator</a></li>
-                <li><a href="/MATIX/00-Pag/Conversor/conversor.html">Converter</a></li>
-                <li><a href="/MATIX/00-Pag/Formulas/formulas.html">Formulas</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+  <!-- NAVBAR -->
+  <header class="nav-container">
+    <nav>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
+      <img src="./logo.png" alt="MATIX Logo" class="logo">
 
+      <ul class="menu">
+        <li><a href="/MATIX/">Home</a></li>
+        <li><a href="/MATIX/00-Pag/Calculadora/calculadora.html">Calculator</a></li>
+        <li><a href="/MATIX/00-Pag/Conversor/conversor.html">Converter</a></li>
+        <li><a href="/MATIX/00-Pag/Formulas/formulas.html">Formulas</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<header>Fórmulas Matemáticas y Científicas</header>
+  <!-- TÍTULO -->
+  <main>
+    <h1 class="titulo">Fórmulas Matemáticas y Científicas</h1>
 
-<!-- BUSCADOR -->
-<div class="buscador">
-  <input type="text" id="search" placeholder="Buscar fórmula..." onkeyup="filtrar()">
-</div>
+    <!-- BUSCADOR -->
+    <div class="buscador">
+      <input 
+        type="text" 
+        id="search" 
+        placeholder="Buscar fórmula..." 
+        onkeyup="filtrar()"
+      >
+    </div>
 
-<!-- CONTENIDO -->
-<div class="contenedor" id="contenedor">
+    <!-- CONTENIDO -->
+    <section class="contenedor">
 
-  <!-- MATEMÁTICAS -->
-  <div class="card">
-    <h2>Matemáticas</h2>
+      <!-- Matemáticas -->
+      <div class="card">
+        <h2>Matemáticas</h2>
 
-    <div class="formula">a² + b² = c²</div>
-    <button onclick="copiar('a² + b² = c²')">Copiar</button>
+        <div class="formula-item">
+          <span>a² + b² = c²</span>
+          <button onclick="copiar('a² + b² = c²')">Copiar</button>
+        </div>
 
-    <div class="formula">Área círculo = πr²</div>
-    <button onclick="copiar('πr²')">Copiar</button>
+        <div class="formula-item">
+          <span>Área círculo = πr²</span>
+          <button onclick="copiar('πr²')">Copiar</button>
+        </div>
 
-    <div class="formula">Pendiente = (y2 - y1)/(x2 - x1)</div>
-    <button onclick="copiar('(y2-y1)/(x2-x1)')">Copiar</button>
-  </div>
+        <div class="formula-item">
+          <span>Pendiente = (y2 - y1)/(x2 - x1)</span>
+          <button onclick="copiar('(y2-y1)/(x2-x1)')">Copiar</button>
+        </div>
+      </div>
 
-  <!-- FÍSICA -->
-  <div class="card">
-    <h2>Física</h2>
+      <!-- Física -->
+      <div class="card">
+        <h2>Física</h2>
 
-    <div class="formula">F = m · a</div>
-    <button onclick="copiar('F=m*a')">Copiar</button>
+        <div class="formula-item">
+          <span>F = m · a</span>
+          <button onclick="copiar('F=m*a')">Copiar</button>
+        </div>
 
-    <div class="formula">V = d / t</div>
-    <button onclick="copiar('d/t')">Copiar</button>
+        <div class="formula-item">
+          <span>V = d / t</span>
+          <button onclick="copiar('d/t')">Copiar</button>
+        </div>
 
-    <div class="formula">E = ½mv²</div>
-    <button onclick="copiar('0.5*m*v^2')">Copiar</button>
-  </div>
+        <div class="formula-item">
+          <span>E = ½mv²</span>
+          <button onclick="copiar('0.5*m*v^2')">Copiar</button>
+        </div>
+      </div>
 
-  <!-- FINANZAS -->
-  <div class="card">
-    <h2>Finanzas</h2>
+      <!-- Finanzas -->
+      <div class="card">
+        <h2>Finanzas</h2>
 
-    <div class="formula">Interés simple = P·r·t</div>
-    <button onclick="copiar('P*r*t')">Copiar</button>
+        <div class="formula-item">
+          <span>Interés simple = P·r·t</span>
+          <button onclick="copiar('P*r*t')">Copiar</button>
+        </div>
 
-    <div class="formula">A = P(1+r)^t</div>
-    <button onclick="copiar('P*(1+r)^t')">Copiar</button>
-  </div>
+        <div class="formula-item">
+          <span>A = P(1+r)^t</span>
+          <button onclick="copiar('P*(1+r)^t')">Copiar</button>
+        </div>
+      </div>
 
-  <!-- CONVERSIÓN -->
-  <div class="card">
-    <h2>Conversión</h2>
+      <!-- Conversión -->
+      <div class="card">
+        <h2>Conversión</h2>
 
-    <div class="formula">°F = (°C × 9/5) + 32</div>
-    <button onclick="copiar('(C*9/5)+32')">Copiar</button>
+        <div class="formula-item">
+          <span>°F = (°C × 9/5) + 32</span>
+          <button onclick="copiar('(C*9/5)+32')">Copiar</button>
+        </div>
 
-    <div class="formula">km → millas = km × 0.621371</div>
-    <button onclick="copiar('km*0.621371')">Copiar</button>
-  </div>
+        <div class="formula-item">
+          <span>km → millas = km × 0.621371</span>
+          <button onclick="copiar('km*0.621371')">Copiar</button>
+        </div>
+      </div>
 
-</div>
+    </section>
+  </main>
 
-<script src="formulas.js"></script>
+  <!-- JS -->
+  <script src="formulas.js"></script>
+
 </body>
 </html>
