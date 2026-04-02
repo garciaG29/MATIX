@@ -1,22 +1,21 @@
-/* RESET */
-*{
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* BODY */
-body{
-  background: rgb(242,242,242);
+/* ================= BODY ================= */
+body {
+  background: #f2f2f2;
   min-height: 100vh;
-  font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
-/* ================= NAV APPLE ================= */
+/* ================= NAV ================= */
 nav {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
   height: 50px;
 
@@ -32,7 +31,7 @@ nav {
   z-index: 1000;
 }
 
-.logo{
+.logo {
   height: 30px;
   margin-right: 20px;
 }
@@ -43,44 +42,43 @@ nav {
   list-style: none;
 }
 
-.menu li a {
+.menu a {
   text-decoration: none;
   color: #000;
   font-size: 14px;
   transition: 0.3s;
 }
 
-.menu li a:hover {
+.menu a:hover {
   opacity: 0.5;
 }
 
 /* ================= SECCIÓN ================= */
-.calc-section{
+.calc-section {
   margin-top: 80px;
   text-align: center;
   padding: 40px 20px;
 }
 
-/* TITULOS */
-.calc-title{
+.calc-title {
   font-size: 48px;
   font-weight: 500;
 }
 
-.calc-sub{
+.calc-sub {
   font-size: 18px;
   color: #6e6e73;
   margin-top: 10px;
 }
 
 /* ================= CALCULADORA ================= */
-.calc-wrapper{
+.calc-wrapper {
   display: flex;
   justify-content: center;
   margin-top: 50px;
 }
 
-#calculadora{
+#calculadora {
   background: rgba(255,255,255,0.7);
   backdrop-filter: blur(20px);
   padding: 20px;
@@ -89,119 +87,79 @@ nav {
 }
 
 /* PANTALLA */
-#calculadora input{
+#calculadora input {
   width: 100%;
   padding: 20px;
   font-size: 22px;
   color: white;
   border: none;
-  background-color: #1d1d1f;
+  background: #1d1d1f;
   border-radius: 10px;
   margin-bottom: 15px;
   text-align: right;
 }
 
-#calculadora input:focus{
-	outline: none;
+#calculadora input:focus {
+  outline: none;
 }
 
 /* BOTONES GRID */
-.buttons{
+.buttons {
   display: grid;
   grid-template-columns: repeat(4, 70px);
   gap: 10px;
 }
 
 /* BOTONES */
-#calculadora button{
-  width: 100%;
+#calculadora button {
   border-radius: 12px;
   border: none;
   font-size: 16px;
   cursor: pointer;
   background: #f2f2f2;
-  transition: 0.2s;
+  transition: all 0.15s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-#calculadora button:hover{
+#calculadora button:hover {
   transform: scale(1.05);
   background: #e5e5e5;
 }
 
+#calculadora button:active {
+  transform: scale(0.92);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
 /* OPERACIONES */
-#calculadora button.operacion{
-  background-color: #699C64;
+#calculadora button.operacion {
+  background: #699C64;
   color: white;
 }
 
-#calculadora button.operacion:hover{
-  background-color: #5a8756;
+#calculadora button.operacion:hover {
+  background: #5a8756;
 }
 
 /* ESPECIALES */
-#clear, #igual{
-  background-color: #9EBF9B;
-  color: rgb(0, 0, 0);
+#clear, #igual {
+  background: #9EBF9B;
+  color: #000;
 }
 
-/* INFO */
-.calc-info{
-  margin-top: 50px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  color: #6e6e73;
-}
-
-/* ================= RESPONSIVE ================= */
-@media (max-width: 768px){
-
-  .calc-title{
-    font-size: 32px;
-  }
-
-  .calc-sub{
-    font-size: 16px;
-  }
-
-  .buttons{
-    grid-template-columns: repeat(4, 60px);
-  }
-
-  #calculadora button{
-    width: 100%;
-  }
-
-}
-#calculadora button{
-  transition: all 0.15s ease;
-}
-
-#calculadora button:active{
-  transform: scale(0.92);
-  filter: brightness(0.9);
-}
-#calculadora button{
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-#calculadora button:active{
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-.history{
+/* ================= HISTORIAL ================= */
+.history {
   margin-top: 40px;
   max-width: 300px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
   text-align: left;
 }
 
-.history ul{
+.history ul {
   list-style: none;
-  padding: 0;
 }
 
-.history li{
+.history li {
   background: white;
   margin-bottom: 10px;
   padding: 10px;
@@ -209,281 +167,63 @@ nav {
   font-size: 14px;
 }
 
-/* ================= RESPONSIVE PRO ================= */
-
-/* 📱 TABLET */
-@media (max-width: 1024px){
-
-  .calc-title{
-    font-size: 36px;
-  }
-
-  .calc-sub{
-    font-size: 16px;
-  }
-
-  #calculadora{
-    padding: 15px;
-  }
-
-  .buttons{
-    grid-template-columns: repeat(4, 65px);
-    gap: 10px;
-  }
-
-  #calculadora button{
-    height: 55px;
-    font-size: 15px;
-  }
-
+/* ================= FOOTER ================= */
+.footer {
+  background: #f5f5f7;
+  padding: 50px 20px;
 }
 
-
-/* 📱 MÓVIL */
-@media (max-width: 768px){
-
-  /* NAV */
-  .menu{
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 50px;
-    width: 100%;
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(20px);
-    text-align: center;
-    padding: 20px 0;
-  }
-
-  .menu.active{
-    display: flex;
-  }
-
-  .menu-toggle{
-    display: block;
-    position: absolute;
-    left: 20px;
-    font-size: 22px;
-    cursor: pointer;
-  }
-
-  /* TITULOS */
-  .calc-title{
-    font-size: 28px;
-  }
-
-  .calc-sub{
-    font-size: 14px;
-  }
-
-  /* CALCULADORA */
-  .calc-wrapper{
-    margin-top: 30px;
-  }
-
-  #calculadora{
-    width: 100%;
-    max-width: 320px;
-    padding: 15px;
-  }
-
-  /* PANTALLA */
-  #calculadora input{
-    font-size: 18px;
-    padding: 15px;
-  }
-
-  /* BOTONES */
-  .buttons{
-    grid-template-columns: repeat(4, 1fr); /* 🔥 adaptable */
-    gap: 8px;
-  }
-
-  #calculadora button{
-    height: 50px;
-    font-size: 14px;
-  }
-
-  /* HISTORIAL */
-  .history{
-    max-width: 90%;
-  }
-
-  .history li{
-    font-size: 13px;
-  }
-
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 40px;
 }
 
-
-/* 📱 MÓVIL PEQUEÑO (iPhone SE 🔥) */
-@media (max-width: 400px){
-
-  .calc-title{
-    font-size: 24px;
-  }
-
-  #calculadora{
-    max-width: 280px;
-  }
-
-  #calculadora button{
-    height: 45px;
-    font-size: 13px;
-  }
-
+.footer a {
+  display: block;
+  margin: 5px 0;
+  text-decoration: none;
+  color: #1d1d1f;
 }
 
-/* ================= RESPONSIVE PRO ================= */
-
-/* 📱 TABLET */
-@media (max-width: 1024px){
-
-  .calc-title{
-    font-size: 36px;
-  }
-
-  .calc-sub{
-    font-size: 16px;
-  }
-
-  #calculadora{
-    padding: 15px;
-  }
-
-  .buttons{
-    grid-template-columns: repeat(4, 65px);
-    gap: 10px;
-  }
-
-  #calculadora button{
-    height: 55px;
-    font-size: 15px;
-  }
-
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  color: #6e6e73;
 }
 
-
-/* 📱 MÓVIL */
-@media (max-width: 768px){
-
-  /* NAV */
-  .menu{
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 50px;
-    width: 100%;
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(20px);
-    text-align: center;
-    padding: 20px 0;
-  }
-
-  .menu.active{
-    display: flex;
-  }
-
-  .menu-toggle{
-    display: block;
-    position: absolute;
-    left: 20px;
-    font-size: 22px;
-    cursor: pointer;
-  }
-
-  /* TITULOS */
-  .calc-title{
-    font-size: 28px;
-  }
-
-  .calc-sub{
-    font-size: 14px;
-  }
-
-  /* CALCULADORA */
-  .calc-wrapper{
-    margin-top: 30px;
-  }
-
-  #calculadora{
-    width: 100%;
-    max-width: 320px;
-    padding: 15px;
-    color: #000;
-  }
-
-  /* PANTALLA */
-  #calculadora input{
-    font-size: 18px;
-    padding: 15px;
-    color: #000;
-  }
-
-  /* BOTONES */
-  .buttons{
-    grid-template-columns: repeat(4, 1fr); /* 🔥 adaptable */
-    gap: 8px;
-    color: #000;
-  }
-
-  #calculadora button{
-    height: 50px;
-    font-size: 14px;
-    color: #0a0a0a;
-  }
-
-  /* HISTORIAL */
-  .history{
-    max-width: 90%;
-  }
-
-  .history li{
-    font-size: 13px;
-  }
-
-}
-
-
-/* ================= RESPONSIVE PRO ================= */
+/* ================= RESPONSIVE ================= */
 
 /* TABLET */
-@media (max-width: 1024px){
+@media (max-width: 1024px) {
 
-  .calc-title{
+  .calc-title {
     font-size: 36px;
-    color: #000;
   }
 
-  .calc-sub{
+  .calc-sub {
     font-size: 16px;
-    color: #000;
   }
 
-  #calculadora{
-    padding: 15px;
-    color: #000;
-  }
-
-  .buttons{
+  .buttons {
     grid-template-columns: repeat(4, 65px);
-    gap: 10px;
-    color: #000;
   }
 
-  #calculadora button{
+  #calculadora button {
     height: 55px;
     font-size: 15px;
   }
-
 }
 
-
 /* MÓVIL */
-@media (max-width: 768px){
+@media (max-width: 768px) {
 
-  /* NAV */
-  .menu{
+  nav {
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+  .menu {
     display: none;
     flex-direction: column;
     position: absolute;
@@ -493,102 +233,68 @@ nav {
     backdrop-filter: blur(20px);
     text-align: center;
     padding: 20px 0;
-    color: #000;
   }
 
-  .menu.active{
+  .menu.active {
     display: flex;
   }
 
-  .menu-toggle{
+  .menu-toggle {
     display: block;
     position: absolute;
     left: 20px;
     font-size: 22px;
     cursor: pointer;
-    color: #000;
   }
 
-  /* TITULOS */
-  .calc-title{
+  .calc-title {
     font-size: 28px;
-    color: #000;
   }
 
-  .calc-sub{
+  .calc-sub {
     font-size: 14px;
-    color: #000;
   }
 
-  /* CALCULADORA */
-  .calc-wrapper{
-    margin-top: 30px;
-    color: #000;
-  }
-
-  #calculadora{
+  #calculadora {
     width: 100%;
     max-width: 320px;
-    padding: 15px;
-    color: #000;
   }
 
-  /* PANTALLA */
-  #calculadora input{
-    font-size: 18px;
-    padding: 15px;
-  }
-
-  /* BOTONES */
-  .buttons{
-    grid-template-columns: repeat(4, 1fr); /* 🔥 adaptable */
+  .buttons {
+    grid-template-columns: repeat(4, 1fr);
     gap: 8px;
-    color: #000;
   }
 
-  #calculadora button{
+  #calculadora button {
     height: 50px;
     font-size: 14px;
-    color: #000;
   }
 
-  /* HISTORIAL */
-  .history{
+  .history {
     max-width: 90%;
   }
-
-  .history li{
-    font-size: 13px;
-  }
-
 }
+
 /* MÓVIL PEQUEÑO */
-@media (max-width: 400px){
+@media (max-width: 400px) {
 
-  .calc-title{
+  .calc-title {
     font-size: 24px;
-    color: #000;
   }
 
-  #calculadora{
+  #calculadora {
     max-width: 280px;
-    color: #000;
   }
 
-  #calculadora button{
+  #calculadora button {
     height: 45px;
     font-size: 13px;
-    color: #000;
   }
-
 }
 
-
 /* PANTALLAS GRANDES */
-@media (min-width: 1200px){
-
-  #calculadora{
+@media (min-width: 1200px) {
+  #calculadora {
     transform: scale(1.1);
   }
-
 }
