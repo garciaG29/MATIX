@@ -1,0 +1,206 @@
+body {
+  margin: 0;
+  font-family: 'Manrope', sans-serif;
+  background: #f2f2f2;
+}
+
+/* 🔥 LINKS GLOBAL (TODO NEGRO SIN SUBRAYADO) */
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* ================= NAV ================= */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.7);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  z-index: 1000;
+}
+
+/* CONTENEDOR INTERNO (🔥 CLAVE PARA CENTRAR) */
+nav .nav-content {
+  width: 100%;
+  max-width: 1100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px;
+}
+
+/* LOGO */
+.logo {
+  height: 35px;
+}
+
+/* MENU CENTRADO */
+.menu {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+/* LINKS */
+.menu a {
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  opacity: 0.5;
+}
+
+/* BOTÓN MOBILE */
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* ================= HERO ================= */
+.contact-hero {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.contact-hero h1 {
+  font-size: 50px;
+}
+
+.contact-hero p {
+  color: #6e6e73;
+}
+
+/* ================= LAYOUT ================= */
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1030px;
+  margin: 60px auto;
+}
+
+/* ================= CARDS ================= */
+.profile-card, .form-card {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(20px);
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* PERFIL */
+.profile-card {
+  text-align: center;
+}
+
+.profile-card img {
+  width: 50%;
+  border-radius: 50%;
+}
+
+/* ================= FORM ================= */
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: #f5f5f7;
+  outline: none;
+}
+
+.input-group label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  color: #888;
+  transition: 0.3s;
+}
+
+.input-group input:focus + label,
+.input-group textarea:focus + label,
+.input-group input:valid + label,
+.input-group textarea:valid + label {
+  top: -8px;
+  font-size: 12px;
+  background: white;
+  padding: 0 5px;
+}
+
+.btn-send {
+  width: 100%;
+  padding: 14px;
+  border-radius: 20px;
+  border: none;
+  background: #699C64;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-send:hover {
+  transform: scale(1.03);
+}
+
+/* ================= VALIDACIÓN ================= */
+input:invalid, textarea:invalid {
+  border: 1px solid #ff4d4d;
+}
+
+input:valid, textarea:valid {
+  border: 1px solid #699C64;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  margin-top: 80px;
+  padding: 50px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px){
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    background: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+}
